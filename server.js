@@ -26,19 +26,18 @@ const sendNotification = async (email) => {
 // ✅ LOGIN API
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  if (email === "admin@gmail.com" && password === "1234") {
+  // if (email === "admin@gmail.com" && password === "1234") {
     await sendNotification(email);
     return res.json({
       ok: true,
       user: { firstName: "Admin" }
     });
-
-  } else {
-    return res.json({
-      ok: false,
-      error: "Invalid credentials"
-    });
-  }
+  // } else {
+  //   return res.json({
+  //     ok: false,
+  //     error: "Invalid credentials"
+  //   });
+  // }
 });
 
 app.listen(5000, () => {
