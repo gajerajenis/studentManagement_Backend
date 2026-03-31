@@ -1,0 +1,45 @@
+// https://chatgpt.com/share/6952a937-5210-8001-b30a-7ad6d1c09f05
+
+
+
+  user: "sa",
+  password: "Jenis@123",
+  server: "localhost",
+
+CREATE TABLE Students (
+    StudentId INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100),
+    Email NVARCHAR(100),
+    Age INT
+);
+
+
+
+
+
+CREATE PROCEDURE sp_AddStudent
+    @Name NVARCHAR(100),
+    @Email NVARCHAR(100),
+    @Age INT
+AS
+BEGIN
+    INSERT INTO Students (Name, Email, Age)
+    VALUES (@Name, @Email, @Age);
+END;
+
+
+
+CREATE PROCEDURE sp_GetStudents
+AS
+BEGIN
+    SELECT * FROM Students;
+END;
+
+
+
+  EXEC sp_AddStudent 
+    @Name = 'Rahul',
+    @Email = 'rahul@gmail.com',
+    @Age = 22;
+
+EXEC sp_GetStudents;
